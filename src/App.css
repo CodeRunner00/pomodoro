@@ -47,10 +47,23 @@ button {
   color: red;
 }
 
+input  {
+  border: none;
+}
+
 button:hover {
   cursor: pointer;
 }
 
+.show-typing-false {
+  display: none;
+}
+
+.show-typing-true {
+  display: block;
+  color: white;
+  font-size: 50%;
+}
 
 .btn-text-true {
   display: none;
