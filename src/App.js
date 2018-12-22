@@ -4,6 +4,7 @@ import './App.css';
 import Button from './Button.js';
 import Timer from './Timer.js';
 import ActivePomodoroInput from './ActivePomodoroInput.js';
+import PassivePomodoroInput from './PassivePomodoroInput.js';
 
 class App extends Component {
 
@@ -14,11 +15,13 @@ class App extends Component {
 
         this.state = {
             time: 0,
+            passiveTime: 0,
             active: false,
             playText: 'Get Started',
             activeInterval: null,
             finalMin: false,
             completed: 0,
+            activeTime: 0,
             typingActiveTime: 'false'
         }
 
@@ -31,6 +34,7 @@ class App extends Component {
         this.resetPassiveTime = this.resetPassiveTime.bind(this);
         this.handleSubmit =this.handleSubmit.bind(this);
         this.handleActiveChange = this.handleActiveChange.bind(this);
+        this.handlePassiveChange = this.handlePassiveChange.bind(this);
     }
 
     handleSubmit(e) {
@@ -40,11 +44,18 @@ class App extends Component {
 
     }
 
-    handleActiveChange(e) {
+    handlePassiveChange(e) {
         console.log('event handleActiveChange time ', e.target);
         this.setState({typingActiveTime: 'true'});
 
-        this.setState({time: this.miliseconds(0,e.target.value,0)});
+        this.setState({passiveTime: parseInt(e.target.value)});
+    }
+
+    handleActiveChange(e) {
+        console.log('event handleActiveChange time ', e.target);
+        this.setState({typingActiveTime: 'true'});
+        this.setState({ activeTime: parseInt(e.target.value) });
+        this.setState({time: this.miliseconds(0,0, parseInt(e.target.value)) });
     }
 
     miliseconds = (hrs, min, sec) =>  {
@@ -88,12 +99,12 @@ class App extends Component {
     }
 
     resetActiveTime = () => {
-      this.setState({time: this.miliseconds(0,0 , 25)})
+      this.setState({time: this.miliseconds(0,0, this.state.activeTime)})
       this.setState({playText: 'Time has started!'});
     }
 
     resetPassiveTime = () => {
-     this.setState({time: this.miliseconds(0, 0, 5)})
+     this.setState({time: this.miliseconds(0, 0, this.state.passiveTime)})
      this.setState({playText: 'Relax!'});
     }
 
@@ -120,7 +131,8 @@ class App extends Component {
            Get some stuff done!  You have completed {this.state.completed} pomodoros!
           </h2>
           <p className="play-text">{this.state.playText}</p>
-             <ActivePomodoroInput handleActiveSubmit= {this.handleSubmit} handleActiveChange={this.handleActiveChange}/>
+             <ActivePomodoroInput handleActiveSubmit= {this.handleSubmit} handleActiveChange={this.handleActiveChange} active={this.state.active}/>
+              <PassivePomodoroInput handleActiveSubmit= {this.handleSubmit} handlePassiveChange={this.handlePassiveChange} active={this.state.active}/>
              <p className={`show-typing-${this.state.typingActiveTime}`}>Press enter when you've entered a time</p>
            <Button onClick={this.runActiveTime} playText={this.state.playText} started={this.state.active}/>
           <Timer time={this.state.time} finalMin={this.state.finalMin}/>

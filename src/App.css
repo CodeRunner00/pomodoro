@@ -26,6 +26,10 @@
   color: #61dafb;
 }
 
+.input-true {
+  display: none;
+}
+
 .play-text {
   font-size: 200%;
 }
@@ -36,6 +40,11 @@ button {
   max-width: 125px;
   width: 100%;
 
+}
+
+form input {
+    background-color: lightgrey;
+  border-radius: 5px;
 }
 
 .timer {

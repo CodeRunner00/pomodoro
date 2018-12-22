@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ActivePomodoroInput extends React.Component {
+class passivePomodoroInput extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -13,8 +13,8 @@ class ActivePomodoroInput extends React.Component {
     return (
       <form className={active} onSubmit={this.props.handleActiveSubmit}>
         <label>
-          Enter an active Pomodoro time:
-          <input type="text" value={time} onChange={this.props.handleActiveChange}/>
+          Enter an passive Pomodoro time:
+          <input type="text" value={time} onChange={this.props.handlePassiveChange}/>
         </label>
 
       </form>
@@ -22,4 +22,4 @@ class ActivePomodoroInput extends React.Component {
   }
 }
 
-export default ActivePomodoroInput;
+export default passivePomodoroInput;
