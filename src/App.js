@@ -95,12 +95,12 @@ class App extends Component {
     }
 
     resetActiveTime = () => {
-      this.setState({time: this.miliseconds(0,0, this.state.activeTime)})
+      this.setState({time: this.miliseconds(0,this.state.activeTime, 0 )})
       this.setState({playText: 'Time has started!'});
     }
 
     resetPassiveTime = () => {
-     this.setState({time: this.miliseconds(0, 0, this.state.passiveTime)})
+     this.setState({time: this.miliseconds(0, this.state.passiveTime, 0)})
      this.setState({playText: 'Relax!'});
     }
 
