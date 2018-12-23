@@ -13,11 +13,13 @@ class App extends Component {
 
         this.active = false;
 
+
         this.state = {
             time: 0,
+            pomodoroStarted: false,
             passiveTime: 0,
             active: false,
-            playText: 'Get Started',
+            playText: 'Get Started!',
             activeInterval: null,
             finalMin: false,
             completed: 0,
@@ -32,17 +34,11 @@ class App extends Component {
         this.runActiveTime = this.runActiveTime.bind(this);
         this.resetActiveTime = this.resetActiveTime.bind(this);
         this.resetPassiveTime = this.resetPassiveTime.bind(this);
-        this.handleSubmit =this.handleSubmit.bind(this);
         this.handleActiveChange = this.handleActiveChange.bind(this);
         this.handlePassiveChange = this.handlePassiveChange.bind(this);
     }
 
-    handleSubmit(e) {
 
-        console.log('event handleSubmit time ', e.target);
-        e.preventDefault()
-
-    }
 
     handlePassiveChange(e) {
         console.log('event handleActiveChange time ', e.target);
@@ -113,7 +109,7 @@ class App extends Component {
 
     runActiveTime = () => {
 
-
+            this.setState({pomodoroStarted: true});
             this.active = true;
             this.setState({active: true});
             this.setState({activeInterval: setInterval(this.countdownFunction, 1000)});
@@ -132,9 +128,12 @@ class App extends Component {
           </h2>
           <p className="play-text">{this.state.playText}</p>
              <ActivePomodoroInput handleActiveSubmit= {this.handleSubmit} handleActiveChange={this.handleActiveChange} active={this.state.active}/>
+             <br/>
               <PassivePomodoroInput handleActiveSubmit= {this.handleSubmit} handlePassiveChange={this.handlePassiveChange} active={this.state.active}/>
-             <p className={`show-typing-${this.state.typingActiveTime}`}>Press enter when you've entered a time</p>
+              <br/>
+             <p className={`show-typing-${this.state.typingActiveTime} ${this.state.pomodoroStarted}`}>Press get started button when you've entered active and passive times</p>
            <Button onClick={this.runActiveTime} playText={this.state.playText} started={this.state.active}/>
+           <hr/>
           <Timer time={this.state.time} finalMin={this.state.finalMin}/>
 
 

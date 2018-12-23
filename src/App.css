@@ -33,12 +33,19 @@
 .play-text {
   font-size: 200%;
 }
+
+hr {
+  margin-top: 2%;
+}
 button {
+  margin-top: 1.5%;
   border-radius: 5px;
   background-color: teal;
   color: white;
   max-width: 125px;
   width: 100%;
+  padding: 10px;
+  border: none;
 
 }
 
@@ -58,6 +65,7 @@ form input {
 
 input  {
   border: none;
+  margin-left: 10px;
 }
 
 button:hover {
@@ -74,15 +82,17 @@ button:hover {
   font-size: 50%;
 }
 
+.show-typing-true.true {
+ display: none;
+}
+
 .btn-text-true {
   display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media only screen and (max-width: 600px) {
+hr {
+  margin: 12% 0;
+}
+
 }
