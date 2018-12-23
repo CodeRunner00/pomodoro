@@ -51,7 +51,7 @@ class App extends Component {
         console.log('event handleActiveChange time ', e.target);
         this.setState({typingActiveTime: 'true'});
         this.setState({ activeTime: parseInt(e.target.value) });
-        this.setState({time: this.miliseconds(0,0, parseInt(e.target.value)) });
+        this.setState({time: this.miliseconds(0,parseInt(e.target.value), 0 ) });
     }
 
     miliseconds = (hrs, min, sec) =>  {
