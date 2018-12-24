@@ -137,8 +137,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header"> POMODORO </header>
         <h2 className>
-          Get some stuff done!You have completed {this.state.completed}
-          pomodoros!
+          Get some stuff done! You have completed {this.state.completed} pomodoros!
         </h2>{" "}
         <p className="play-text"> {this.state.playText} </p>{" "}
         <ActivePomodoroInput
