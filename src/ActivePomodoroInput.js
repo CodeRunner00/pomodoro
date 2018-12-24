@@ -13,7 +13,7 @@ class ActivePomodoroInput extends React.Component {
     return (
       <form className={active} onSubmit={this.props.handleActiveSubmit}>
         <label>
-          Enter an active pomodoro time:
+          Enter an active pomodoro time in mins:
           <input type="text" value={time} onChange={this.props.handleActiveChange}/>
         </label>
 
