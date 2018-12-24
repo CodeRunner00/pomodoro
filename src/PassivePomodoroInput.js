@@ -13,7 +13,7 @@ class passivePomodoroInput extends React.Component {
     return (
       <form className={active} onSubmit={this.props.handleActiveSubmit}>
         <label>
-          Enter an passive pomodoro in mins time:
+          Enter an passive pomodoro time in minutes:
           <input type="text" value={time} onChange={this.props.handlePassiveChange}/>
         </label>
 
